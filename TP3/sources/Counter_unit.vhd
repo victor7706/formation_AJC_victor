@@ -41,15 +41,15 @@ end_counter <= end_counter_s;
             end_counter_s <= '0';
         
         elsif rising_edge(clk) then               
-            --si le compteur atteint la valeur souhaitée on réinitialise le compteur et met end_compteur à 1    
+            --si le compteur atteint la valeur souhaitÃ©e on rÃ©initialise le compteur et met end_compteur Ã  1    
             if counter = MAX_COUNT then -- 199 999 999 (dec) = 1011111010111100000111111111 binaire
                 end_counter_s <= '1';
                 counter <= (others => '0');    
             
-            --s'il n'a toujours pas atteint la valeur max alors on incrémente le compteur de +1
+            --s'il n'a toujours pas atteint la valeur max alors on incrÃ©mente le compteur de +1
             else
                 counter <= counter +1;
-                end_counter_s <= '0'; --on met end_couteur à zéro lorsqu'il n'a pas sa valeur max 
+                end_counter_s <= '0'; --on met end_couteur Ã  zÃ©ro lorsqu'il n'a pas sa valeur max 
                 
             end if; 
         end if;
