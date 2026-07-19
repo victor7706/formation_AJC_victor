@@ -16,7 +16,7 @@ end top_Counter_unit;
 
 architecture rtl of top_Counter_unit is
     ------------------------------------------------
-    -- Déclaration du composant Counter_unit
+    -- DÃ©claration du composant Counter_unit
     ------------------------------------------------
     component Counter_unit
         generic (
@@ -40,8 +40,8 @@ begin
 
     cycle_counter_o <= std_logic_vector(cycle_counter_s);
 
-    -- Détection de front montant : garantit un pulse d'1 cycle
-    -- quel que soit la largeur réelle de end_counter_s
+    -- DÃ©tection de front montant : garantit un pulse d'1 cycle
+    -- quel que soit la largeur rÃ©elle de end_counter_s
 
     ------------------------------------------------
     -- Instanciation du compteur
@@ -65,11 +65,11 @@ begin
             cycle_counter_s  <= (others => '0');
 
         elsif rising_edge(clk) then
-            -- Mémorisation pour détection de front au cycle suivant
+            -- MÃ©morisation pour dÃ©tection de front au cycle suivant
             end_counter_prev <= end_counter_s;
 
             -- Logique de comptage : elsif garantit une seule
-            -- écriture non ambiguë sur trigger_s par cycle
+            -- Ã©criture non ambiguÃ« sur trigger_s par cycle
             if trigger_s = "01" and end_counter_pulse = '1' then
                 cycle_counter_s <= cycle_counter_s + 1;
                 trigger_s       <= "00";
